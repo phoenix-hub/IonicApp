@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,6 +8,17 @@ import { Component } from '@angular/core';
 })
 export class Tab3Page {
 
-  constructor() {}
+  myval: any;
+  constructor(private http: HttpClient) { }
+  get() {
+    //return this.http.get<any>('https://api.kalchakra.online/api/ionic').subscribe(x => {
+    return this.http.get<any>('https://jsonplaceholder.typicode.com/todos/1').subscribe(x => {
+      this.myval = JSON.stringify(x);
+      console.warn(x);
+    });
+  }
 
+  ngOnInit(): void {
+    this.get();
+  }
 }
