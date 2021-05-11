@@ -1,10 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthoptionPage } from '../auth/authoption/authoption.page';
-import { ForgetPage } from '../auth/forget/forget.page';
-import { SigninPage } from '../auth/signin/signin.page';
-import { SignupPage } from '../auth/signup/signup.page';
-import { TabsPage } from './tabs.page'; 
+import { TabsPage } from './tabs.page';
 
 const routes: Routes = [
   {
@@ -32,27 +28,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    component: AuthoptionPage,
-    pathMatch: 'full'
-  },
-  {
-    path: 'authoption',
-    component: AuthoptionPage,
-    pathMatch: 'full'
-  },
-  {
-    path: 'signin',
-    component: SigninPage,
-    pathMatch: 'full'
-  },
-  {
-    path: 'signup',
-    component: SignupPage,
-    pathMatch: 'full'
-  },
-  {
-    path: 'forget',
-    component: ForgetPage,
+    redirectTo: '/tabs/tab1',
     pathMatch: 'full'
   }
 ];
@@ -60,4 +36,4 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forChild(routes)],
 })
-export class TabsPageRoutingModule { }
+export class TabsPageRoutingModule {}

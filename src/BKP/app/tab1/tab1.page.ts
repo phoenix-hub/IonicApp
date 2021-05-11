@@ -50,6 +50,21 @@ export class Tab1Page {
     password: [
       { type: 'required', message: 'password is Required.' }
     ]
+    ,
+
+    street: [
+      { type: 'required', message: 'street is Required.' }
+    ],
+    city: [
+      { type: 'required', message: 'city is Required.' },
+      { type: 'maxlength', message: 'city can be only 100 charactor.' }
+    ],
+    state: [
+      { type: 'required', message: 'state is Required.' }
+    ],
+    zip: [
+      { type: 'required', message: 'zip is Required.' }
+    ]
   }
 
   RegistrationForm: any;
@@ -71,8 +86,16 @@ export class Tab1Page {
   }
 
   ngOnInit(): void {
-    this.initialForm(); 
-  } 
+    this.initialForm();
+    this.BindList();
+    console.log(this.stuList);
+  }
+  BindList() {
+    this.service.GetAll().subscribe(x => {
+      this.stuList = x;
+      console.warn(x);
+    })
+  }
   submit() {
     console.log(this.RegistrationForm.value);
     this.service.Post(this.RegistrationForm.value).subscribe(x => {
